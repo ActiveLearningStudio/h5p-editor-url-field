@@ -37,7 +37,6 @@ H5PEditor.widgets.linkWidget = (function ($) {
 
     // Register listener for changes in url field
     $urlText.on('input propertychange paste', function () {
-      console.log("got event");
       findUrlProtocol();
     });
 
@@ -45,9 +44,6 @@ H5PEditor.widgets.linkWidget = (function ($) {
      * Finds url protocol and sets it in selector if found.
      */
     var findUrlProtocol = function () {
-      console.log("RUNNING FIND URL PROTOCOL!");
-      console.log($selector);
-      console.log($('option', $selector));
       var $options = $('option', $selector);
       $options.each(function (idx, option) {
         if ($urlText.val().substr(0, option.value.length) === option.value) {
@@ -55,16 +51,6 @@ H5PEditor.widgets.linkWidget = (function ($) {
           $selector.val(option.value);
         }
       });
-      if ($urlText.val().substr(0, 7) === 'http:\/\/') {
-        $urlText.val($urlText.val().substr(7));
-        $selector.val('http://');
-      } else if ($urlText.val().substr(0, 8) === 'https:\/\/') {
-        $urlText.val($urlText.val().substr(8));
-        $selector.val('https://');
-      } else if ($urlText.val().substr(0, 1) === '\/') {
-        $urlText.val($urlText.val().substr(1));
-        $selector.val('/');
-      }
 
       // Make sure params are updated
       params.url = $urlText.val();
