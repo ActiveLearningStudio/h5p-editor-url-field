@@ -1,5 +1,5 @@
 /*global H5PEditor, H5P */
-H5PEditor.widgets.LinkWidget = (function ($) {
+H5PEditor.widgets.linkWidget = (function ($) {
 
   /**
    * Initialize link widget
