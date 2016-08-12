@@ -75,9 +75,8 @@ H5PEditor.widgets.linkWidget = (function ($) {
      * Validate the url
      */
     self.validate = function () {
-
-      // We only require the URL field to be non-empty
-      return $urlText.val().trim().length >= 1;
+      // We only require the URL field to be non-empty if mandatory
+      return field.optional === true || $urlText.val().trim().length >= 1;
     };
 
     /**
