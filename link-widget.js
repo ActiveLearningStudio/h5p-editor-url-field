@@ -12,6 +12,8 @@ H5PEditor.widgets.linkWidget = (function ($) {
   function LinkWidget(parent, field, params, setValue) {
     var self = this;
 
+    self.field = field;
+
     // Tell editor to handle passing readies.
     self.passReadies = false;
 
@@ -94,6 +96,10 @@ H5PEditor.widgets.linkWidget = (function ($) {
     self.appendTo = function ($wrapper) {
       $container.appendTo($wrapper);
     };
+
+    self.getDomElement = function () {
+      return $container;
+    }
   }
 
   return LinkWidget;
