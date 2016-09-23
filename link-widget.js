@@ -12,6 +12,8 @@ H5PEditor.widgets.linkWidget = (function ($) {
   function LinkWidget(parent, field, params, setValue) {
     var self = this;
 
+    self.field = field;
+
     // Tell editor to handle passing readies.
     self.passReadies = false;
 
@@ -75,9 +77,8 @@ H5PEditor.widgets.linkWidget = (function ($) {
      * Validate the url
      */
     self.validate = function () {
-
-      // We only require the URL field to be non-empty
-      return $urlText.val().trim().length >= 1;
+      // We only require the URL field to be non-empty if mandatory
+      return field.optional === true || $urlText.val().trim().length >= 1;
     };
 
     /**
@@ -95,6 +96,10 @@ H5PEditor.widgets.linkWidget = (function ($) {
     self.appendTo = function ($wrapper) {
       $container.appendTo($wrapper);
     };
+
+    self.getDomElement = function () {
+      return $container;
+    }
   }
 
   return LinkWidget;
