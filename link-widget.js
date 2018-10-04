@@ -99,7 +99,7 @@ H5PEditor.widgets.linkWidget = (function ($) {
 
     self.getDomElement = function () {
       return $container;
-    }
+    };
   }
 
   return LinkWidget;
